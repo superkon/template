@@ -1,0 +1,33 @@
+[{
+	"basicInfo" :
+	{
+		"isLastPage" : false
+	},
+	"items" :
+	[
+		{
+			"id" : "0",
+			"img" : "https://dummyimage.com/500X340/FC0/FFF",
+      "title" : "1 喜裕隆重開幕",
+			"message" : "喜裕隆重開幕，喜裕隆重開幕，喜裕隆重開幕，喜裕隆重開幕，喜裕隆重開幕，喜裕隆重開幕，喜裕隆重開幕，喜裕隆重開幕，喜裕隆重開幕，",
+			"btn_link" : "aaa",
+			"btn_text" : "更多資訊"
+		},
+    {
+			"id" : "1",
+			"img" : "https://dummyimage.com/500X340/FC0/FFF",
+      "title" : "2 喜裕隆重開幕",
+			"message" : "喜裕隆重開幕，喜裕隆重開幕，喜裕隆重開幕，喜裕隆重開幕，喜裕隆重開幕，喜裕隆重開幕，喜裕隆重開幕，喜裕隆重開幕，喜裕隆重開幕，",
+			"btn_link" : "aaa",
+			"btn_text" : "更多資訊"
+		},
+    {
+			"id" : "2",
+			"img" : "https://dummyimage.com/500X340/FC0/FFF",
+      "title" : "3 喜裕隆重開幕",
+			"message" : "喜裕隆重開幕，喜裕隆重開幕，喜裕隆重開幕，喜裕隆重開幕，喜裕隆重開幕，喜裕隆重開幕，喜裕隆重開幕，喜裕隆重開幕，喜裕隆重開幕，",
+			"btn_link" : "aaa",
+			"btn_text" : "更多資訊"
+		}
+	]
+}]

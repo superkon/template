@@ -1,0 +1,195 @@
+/******************************
+COLOR
+******************************/
+$colorBlack : #000000;
+$colorWhite : #FFFFFF;
+
+$colorDarkGrey1 : #1D1D1B;
+
+$colorLightGrey1 : #B2AFB0;
+$colorLightGrey2 : #EFEFEF;
+
+$colorGrey : #58595B;
+
+$color-array:
+(
+	ui: (#333, rgba(#FC0,0.5), #999),
+	grey: (#333, #666, #999)
+);
+
+$default-border-color: $colorGrey;
+$default-bg-color : $colorGrey;
+
+$default-text-color : $colorBlack;
+
+$colorGolden1 : #8C7965;
+$colorDarkGolden1 : #5B4938;
+
+$colorGolden1Lighten : lighten($colorGolden1 ,5%);
+$colorGolden1Lighten2 : lighten($colorGolden1 ,25%);
+
+$colorRed1 : #AE0A3B;
+$colorRed2 : #FD5757;
+
+$colorRed1Lighten : lighten($colorRed1 ,10%);
+
+$colorLightRed1 : #EEE1E3;
+
+$colorLightGolden1 : #DCD3CC;
+
+
+/******************************
+OTHERS FIXED VALUE
+******************************/
+
+$durationUnit: 0.25s;
+$duration: 0.25s;
+$duration2: 0.5s;
+
+$cPadding : 0px 10px; /*important*/
+
+/** overallSize **/
+$min-width-setting-s1:
+(
+	"width-desktop": 1200px,
+	"padding-desktop": 0px 10px,
+	"width-tablet": 100%,
+	"padding-tablet": 0px 10px,
+	"width-mobile": 100%,
+	"padding-mobile": 0px 10px
+);
+
+$min-width-setting-s2:
+(
+	"width-desktop": 960px,
+	"padding-desktop": 0px 10px,
+	"width-tablet": 100%,
+	"padding-tablet": 0px 10px,
+	"width-mobile": 100%,
+	"padding-mobile": 0px 10px
+);
+
+
+/******************************
+FONT STYLE
+******************************/
+$default-text-fontSize : (16px, 13px, 13px);
+$default-text-lineHeight : (1.2em, 1.2em, 1.2em);
+$default-text-letterSpacing : (0em, 0em, 0em);
+$default-text-fontWeight : (300, 300, 300);
+
+$default-list-padding: (30px, 30px, 15px);
+
+$heading-array:
+(
+	"default":
+	(
+		fontSize: $default-text-fontSize,
+		lineHeight: $default-text-lineHeight,
+		letterSpacing: $default-text-letterSpacing,
+		fontWeight: $default-text-fontWeight
+	),
+	"p":
+	(
+		fontSize: $default-text-fontSize,
+		lineHeight: (2.2em,2.2em,2.2em),
+		letterSpacing: (0.2em, 0.2em, 0.2em),
+		fontWeight: $default-text-fontWeight
+	),
+	"h1":
+	(
+		fontSize: (30px, 24px, 24px),
+		lineHeight: (1.2em, 1.2em, 1.2em),
+		fontWeight: (400, 400, 400)
+	),
+	"h2":
+	(
+		fontSize: (30px, 24px, 24px),
+		letterSpacing: (0.2em, 0.2em, 0.2em),
+		lineHeight: (1em, 1em, 1em),
+		fontWeight : (300, 300, 300)
+	),
+	"h3":
+	(
+		fontSize: (20px, 18px, 18px),
+		lineHeight: (1.6em, 1.6em, 1.6em),
+		fontWeight: (300, 300, 300)
+	),
+	"h4":
+	(
+		fontSize: (12px, 12px, 12px),
+		lineHeight: $default-text-lineHeight
+	),
+	"h5":
+	(
+		fontSize: (12px, 12px, 12px),
+		lineHeight: $default-text-lineHeight
+	),
+	"h6":
+	(
+		fontSize: (12px, 12px, 12px),
+		lineHeight: $default-text-lineHeight
+	),
+	"footerMenu":
+	(
+		fontSize: (14px, 12px, 12px),
+		letterSpacing: (0.2em, 0.2em, 0.2em)
+	),
+	"caption":
+	(
+		fontSize: (12px, 12px, 12px),
+		lineHeight: $default-text-lineHeight
+	),
+	"button":
+	(
+		fontSize: (18px, 14px, 14px),
+		lineHeight: (1em, 1em, 1em),
+		letterSpacing: (0.2em, 0.2em, 0.2em)
+	),
+	"button2":
+	(
+		fontSize: (15px, 15px, 15px),
+		lineHeight: $default-text-lineHeight
+	),
+	"subTitle":
+	(
+		fontType: "default",
+		fontSize: (16px, 14px, 12px),
+		lineHeight: $default-text-lineHeight,
+		fontWeight: (300, 300, 300)
+	)
+);
+
+/******************************
+FORM RESET
+******************************/
+$default-reset-input-width: 100%;
+$default-reset-input-height: 40px;
+
+$default-reset-input-border: 0px;
+$default-reset-input-border-color: $default-border-color;
+$default-reset-input-border-style: solid;
+$default-reset-input-border-radius: 0px;
+$default-reset-input-border-padding: 10px;
+$default-reset-input-bgColor: $colorWhite;
+$default-reset-input-color: $colorBlack;
+
+/******************************
+DEVICE
+******************************/
+$devices : ('desktop', 'tablet', 'mobile');
+
+/******************************
+GRID
+******************************/
+$gridPadding : $cPadding;
+$gridTotal : 16;
+
+/******************************
+IMG MAP
+******************************/
+$dImgMap : "common/common.png";
+$mImgMap : "common/commonM2X.png";
+
+$mImgMapWidth : image-width(#{$mImgMap})/2;
+$mImgMapHeight : image-height(#{$mImgMap})/2;

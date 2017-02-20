@@ -1,0 +1,707 @@
+/************************* INCLUDE ****************************/
+@import "include";
+/******************************
+PRESET
+******************************/
+body,
+html {
+	min-height: 100%;
+	-webkit-font-smoothing: antialiased;
+	-webkit-tap-highlight-color: transparent;
+	-webkit-text-size-adjust: none;
+	color: $default-text-color;
+	//background-color: $colorWhite;
+}
+
+body {
+	@include fontType(map-get(map-get($heading-array, default), fontType));
+	color: nth(map-get(map-get($heading-array, default), color), 1);
+
+	&.desktop {
+		font-size: nth(map-get(map-get($heading-array, default), fontSize), 1);
+		line-height: nth(map-get(map-get($heading-array, default), lineHeight), 1);
+		letter-spacing: nth(map-get(map-get($heading-array, default), letterSpacing), 1);
+	}
+
+	&.tablet {
+		font-size: nth(map-get(map-get($heading-array, default), fontSize), 2);
+		line-height: nth(map-get(map-get($heading-array, default), lineHeight), 2);
+		letter-spacing: nth(map-get(map-get($heading-array, default), letterSpacing), 2);
+	}
+
+	&.mobile {
+		font-size: nth(map-get(map-get($heading-array, default), fontSize), 3);
+		line-height: nth(map-get(map-get($heading-array, default), lineHeight), 3);
+		letter-spacing: nth(map-get(map-get($heading-array, default), letterSpacing), 3);
+	}
+}
+/******************************
+ALIGNMENT
+******************************/
+/*** show hide ***/
+.block {
+	display: block;
+}
+
+.hide {
+	display: none;
+}
+/*** inlineBlock Alignment ***/
+.ghost {
+	@include inlineBlock;
+	height: 100%;
+	vertical-align: middle;
+}
+
+.vaTop {
+	@include inlineBlock;
+	vertical-align: top;
+}
+
+.vaMiddle {
+	@include inlineBlock;
+	vertical-align: middle;
+}
+
+.img100 {
+	position: relative;
+	display: block;
+	width: 100%;
+}
+/*** float Alignment ***/
+.fLeft {
+	float: left;
+}
+
+.fRight {
+	float: right;
+}
+
+.clear {
+	clear: both;
+}
+/*** padding / margin Reset ***/
+.noPadding {
+	padding: 0;
+}
+
+.noMargin {
+	margin: 0;
+}
+/*** mobile/desktop Display ***/
+.desktop .onlyM,
+.tablet .onlyM {
+	display: none;
+}
+
+.mobile .onlyD,
+.tablet .onlyD {
+	display: none;
+}
+
+.desktop .onlyP,
+.mobile .onlyP {
+	display: none;
+}
+
+.desktop .onlyMD {
+	display: none;
+}
+
+.mobile .onlyPD {
+	display: none;
+}
+/******************************
+FONT STYLE
+******************************/
+/********** FONT FAMILY **********/
+.playfair {
+	@include fontType(playfair);
+}
+
+.openSans {
+	@include fontType(openSans);
+}
+
+.roboto {
+	@include fontType;
+}
+/********** FONT STYLE **********/
+.defaultText,
+a,
+input,
+label,
+li,
+select,
+textarea {
+	@include textStyle;
+}
+
+.textStyle1,
+h1 {
+	@include textStyle(h1);
+}
+
+.textStyle2,
+h2 {
+	@include textStyle(h2);
+}
+
+.textStyle3,
+h3 {
+	@include textStyle(h3);
+}
+
+.textStyle4,
+h4 {
+	@include textStyle(h4);
+}
+
+.textStyle5,
+h5 {
+	@include textStyle(h5);
+}
+
+.textStyle6,
+h6 {
+	@include textStyle(h6);
+}
+
+.captionText {
+	@include textStyle(caption);
+}
+
+.button {
+	@include textStyle(button);
+}
+
+ol,
+ul {
+	.desktop & {
+		padding-left: nth($default-list-padding, 1);
+	}
+
+	.tablet & {
+		padding-left: nth($default-list-padding, 2);
+	}
+
+	.mobile & {
+		padding-left: nth($default-list-padding, 3);
+	}
+}
+
+ul {
+	list-style: disc;
+}
+
+ol {
+	list-style: decimal;
+}
+
+a {
+	text-decoration: none;
+}
+/******************************
+FREE EDITOR
+******************************/
+/******************************
+FORM RESET
+******************************/
+/********** FONT ELEMENT **********/
+$default-form-padding: 5px;
+
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+input[type="text"],
+input[type="submit"],
+select,
+button,
+textarea{
+	@include formStyleMobileReset;
+}
+
+input.searchSubmit[type="submit"] {
+	@include formStyleMobileSearchReset;
+
+	.desktop & {
+		@include formStyleMobileSearchStyle;
+	}
+
+	.tablet & {
+		@include formStyleMobileSearchStyle;
+	}
+
+	.mobile & {
+		@include formStyleMobileSearchStyle;
+	}
+}
+
+select {
+	background-image: url('../images/common/uiSelectArrow.png');
+	background-repeat: no-repeat;
+	background-size: 30px auto;
+	background-position: 99% center;
+}
+
+textarea {
+	position: relative;
+	display: block;
+	box-sizing: border-box;
+	@include resetSpacing();
+	width: 100%;
+	height: 100px;
+	resize: none;
+	padding: $default-form-padding;
+}
+/*** form row ***/
+$default-label-width: 100px;
+$default-content-margin-left: 100px;
+$default-content-min-height: 30px;
+/*** checkbox ***/
+$default-checkbox-margin-left: 30px;
+$default-checkbox-box-width: 20px;
+$default-checkbox-box-height: 20px;
+$default-checkbox-box-font: 20px;
+$default-checkbox-box-style: 2px solid $colorBlack;
+$default-checkbox-box-bg: $colorWhite;
+$default-checkbox-box-scale: 1.5;
+/*** radio ***/
+$default-radio-width: 16px;
+$default-radio-height: 16px;
+$default-radio-style: 1px solid $colorBlack;
+$default-radio-bg: $colorWhite;
+$default-radio-innerWidth: 8px;
+$default-radio-innerHeight: 8px;
+$default-radio-scale: 1.5;
+/********** FORM STRUCTURE **********/
+.formRow {
+	position: relative;
+	width: 100%;
+	margin-bottom: 10px;
+	/*** specific style ***/
+	&.noLabel {
+		label.inputLabel {
+			display: none;
+		}
+
+		.formContent {
+			margin-left: 0;
+		}
+	}
+
+	&.blockItem {
+		label.inputLabel {
+			position: relative;
+			display: block;
+			width: 100%;
+		}
+
+		.formContent {
+			margin-left: 0;
+		}
+	}
+	/*** form content ***/
+	label.inputLabel {
+		position: absolute;
+		box-sizing: border-box;
+		top: 0;
+		left: 0;
+		padding: $default-form-padding;
+		width: $default-label-width;
+
+		span.text {
+			@include inlineBlock;
+			vertical-align: middle;
+		}
+	}
+
+	.formContent {
+		position: relative;
+		display: block;
+		box-sizing: border-box;
+		margin-left: $default-content-margin-left;
+		min-height: $default-content-min-height;
+	}
+	/*** checkBoxRow ***/
+	&.checkBoxRow {
+		input[type="checkbox"] {
+			display: none;
+		}
+
+		label.checkboxLabel {
+			position: relative;
+			display: block;
+
+			span.checkIco {
+				position: absolute;
+				display: block;
+				box-sizing: border-box;
+				width: $default-checkbox-box-width;
+				height: $default-checkbox-box-height;
+				border: 1px solid $colorBlack;
+				top: 0;
+				left: 0;
+				cursor: pointer;
+				background-color: $default-checkbox-box-bg;
+
+				.icon-form-check-tick {
+					position: absolute;
+					display: block;
+					//top: 1px;
+					//left: 1px;
+					// font-size: 14px;
+					opacity: 0;
+					transform: scale($default-checkbox-box-scale);
+
+					width: 12px;
+					height: 12px;
+					top: 50%;
+					left: 50%;
+					margin-left: -6px;
+					margin-top: -6px;
+					background-color: $colorBlack;
+
+					transition: all $duration;
+				}
+
+				&.selected {
+					.icon-form-check-tick {
+						opacity: 1;
+						transform: scale(1);
+					}
+				}
+			}
+
+			span.checkboxContent {
+				position: relative;
+				display: block;
+				margin-left: $default-checkbox-margin-left;
+				text-align: left;
+				cursor: pointer;
+
+				a {
+					text-decoration: underline;
+				}
+			}
+		}
+	}
+	/*** radioRow ***/
+	&.radioRow {
+		input[type="radio"] {
+			display: none;
+		}
+
+		label.radioLabel {
+			position: relative;
+			@include inlineBlock;
+			cursor: pointer;
+			margin-right: 20px;
+
+			span.checkIco {
+				position: relative;
+				@include inlineBlock;
+				vertical-align: middle;
+				box-sizing: border-box;
+				width: $default-radio-width;
+				height: $default-radio-height;
+				border: $default-radio-style;
+				background-color: $default-radio-bg;
+				border-radius: 50%;
+
+				.icon {
+					position: absolute;
+					display: block;
+					top: 50%;
+					left: 50%;
+					width: $default-radio-innerWidth;
+					height: $default-radio-innerHeight;
+					margin-left: -1*$default-radio-innerWidth/2;
+					margin-top: -1*$default-radio-innerHeight/2;
+					border-radius: 50%;
+					opacity: 0;
+					transform: scale($default-radio-scale);
+					transition: all $duration;
+				}
+
+				&.selected {
+					.icon {
+						opacity: 1;
+						transform: scale(1);
+						background-color: #000;
+					}
+				}
+			}
+		}
+	}
+	/*** upload / search (not yet done)***/
+	.searchBtn,
+	.uploadFormBtn {
+		position: absolute;
+		height: 30px;
+		text-align: center;
+		background-color: $colorBlack;
+		color: $colorWhite;
+		top: 0;
+		right: 0;
+	}
+
+	input.fileUpload {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		left: 0;
+		top: 0;
+		opacity: 0;
+		filter:Alpha(opacity=0);
+	}
+}
+/********** PLACEHOLDER **********/
+$colorPlaceholder: opacity(color(grey, 2), 0.6);
+
+input::-webkit-input-placeholder {
+	color: $colorPlaceholder;
+}
+
+textarea::-webkit-input-placeholder {
+	color: $colorPlaceholder;
+}
+
+input:-moz-placeholder {
+	color: $colorPlaceholder;
+}
+
+textarea:-moz-placeholder {
+	color: $colorPlaceholder;
+}
+
+input::-moz-placeholder {
+	color: $colorPlaceholder;
+}
+
+textarea::-moz-placeholder {
+	color: $colorPlaceholder;
+}
+
+input:-ms-input-placeholder {
+	color: $colorPlaceholder;
+}
+
+textarea:-ms-input-placeholder {
+	color: $colorPlaceholder;
+}
+/******************************
+IMG REMOVE DRAG EFFECT
+******************************/
+img {
+	pointer-events: none;
+}
+/******************************
+FONT GLYPHTER
+******************************/
+// @font-face {
+// 	font-family: 'iconFont';
+// 	src: url('../fonts/icon/iconFont.eot');
+// 	src: url('../fonts/icon/iconFont.eot?#iefix') format('embedded-opentype'), url('../fonts/icon/iconFont.woff') format('woff'), url('../fonts/icon/iconFont.ttf') format('truetype'), url('../fonts/icon/iconFont.svg#iconFont') format('svg');
+// 	font-weight: normal;
+// 	font-style: normal;
+// }
+//
+// [class*='icon-'] {
+// 	position: relative;
+// 	@include inlineBlock;
+// }
+//
+// [class*='icon-']:before {
+// 	display: block;
+// 	font-family: 'iconFont';
+// 	font-style: normal;
+// 	font-weight: normal;
+// 	line-height: 1;
+// 	-webkit-font-smoothing: antialiased;
+// 	-moz-osx-font-smoothing: grayscale;
+// }
+
+@font-face {
+	font-family: "iconFont";
+	src: url('../fonts/icon/iconFont.eot');
+	src: url('../fonts/icon/iconFont.eot?#iefix') format('eot'),
+		url('../fonts/icon/iconFont.woff2') format('woff2'),
+		url('../fonts/icon/iconFont.woff') format('woff'),
+		url('../fonts/icon/iconFont.ttf') format('truetype'),
+		url('../fonts/icon/iconFont.svg#iconFont') format('svg');
+}
+
+.iconFont:before {
+	font-family: "iconFont";
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	/* speak: none; only necessary if not using the private unicode range (firstGlyph option) */
+	text-decoration: none;
+	text-transform: none;
+	line-height: 1em;
+}
+
+
+.icon-arrow:before {
+	content: "\E001";
+}
+
+.icon-heart:before {
+	content: "\E002";
+}
+
+.icon-home:before {
+	content: "\E003";
+}
+
+.icon-winner:before {
+	content: "\E004";
+}
+
+
+/******************************
+SVG
+******************************/
+// .svg-arrow {
+// 	background: url("../svg/css/svg/sprite.css-0d4a8839.svg") 0 0 no-repeat;
+// }
+//
+// .svg-arrow-dims {
+// 	width: 512px;
+// 	height: 273.9px;
+// }
+//
+// .svg-heart {
+// 	background: url("../svg/css/svg/sprite.css-0d4a8839.svg") 0 99.96350364963503% no-repeat;
+// }
+//
+// .svg-heart-dims {
+// 	width: 230px;
+// 	height: 230px;
+// }
+//
+// .svg-home {
+// 	background: url("../svg/css/svg/sprite.css-0d4a8839.svg") 49.6545768566494% 80.29903254177658% no-repeat;
+// }
+//
+// .svg-home-dims {
+// 	width: 176.8px;
+// 	height: 162.9px;
+// }
+//
+// .svg-winner {
+// 	background: url("../svg/css/svg/sprite.css-0d4a8839.svg") 99.94144056217061% 0 no-repeat;
+// }
+//
+// .svg-winner-dims {
+// 	width: 127.7px;
+// 	height: 115px;
+// }
+
+
+/******************************
+GRID
+******************************/
+[class*='CoGrid'],
+[class*='coGrid'] {
+	position: relative;
+	@include inlineBlock;
+	box-sizing: border-box;
+	vertical-align: top;
+
+	&.vaMiddle {
+		vertical-align: middle;
+	}
+	padding: $gridPadding;
+
+	&.np {
+		padding: 0;
+	}
+
+	&.dNp {
+		.desktop & {
+			padding: 0;
+		}
+	}
+
+	&.tNp {
+		.tablet & {
+			padding: 0;
+		}
+	}
+
+	&.mNp {
+		.mobile & {
+			padding: 0;
+		}
+	}
+}
+@for $i from 1 through $gridTotal {
+	 @for $j from 1 through $i{
+		.coGrid-#{$j}-#{$i} {
+			width: #{(1/$i)*100%*$j};
+		}
+
+		.desktop .dCoGrid-#{$j}-#{$i} {
+			width: #{(1/$i)*100%*$j};
+		}
+
+		.tablet .tCoGrid-#{$j}-#{$i} {
+			width: #{(1/$i)*100%*$j};
+		}
+
+		.mobile .mCoGrid-#{$j}-#{$i} {
+			width: #{(1/$i)*100%*$j};
+		}
+	}
+}
+/******************************
+DEBUG
+******************************/
+#debug {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 200px;
+	height: 200px;
+	background-color: $colorBlack;
+	color: $colorWhite;
+	opacity: 0.8;
+	z-index: 100;
+
+	p {
+		color: $colorWhite;
+	}
+}
+/******************************
+OTHER RESET
+******************************/
+.preload * {
+	transition: none !important;
+}
+
+.mWidth {
+	position: relative;
+	margin: 0 auto;
+
+	.desktop & {
+		width: #{map-get($min-width-setting-s1, width-desktop)};
+	}
+
+	.tablet & {
+		width: #{map-get($min-width-setting-s1, width-tablet)};
+	}
+
+	.mobile & {
+		width: #{map-get($min-width-setting-s1, width-mobile)};
+	}
+}
+
+.cPadding {
+	position: relative;
+	padding: $cPadding;
+}

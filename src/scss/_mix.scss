@@ -1,0 +1,284 @@
+/******************************
+ALIGNMENT
+******************************/
+@mixin inlineBlock
+{
+	display: inline-block;
+	*display: inline;
+	*zoom:1;
+}
+
+@mixin absBlock
+{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+}
+
+/******************************
+COLOR SETTING
+******************************/
+@function color($color-group, $index)
+{
+	@return nth( map-get($color-array, $color-group), $index );
+}
+
+@function opacity($color, $opacity)
+{
+	$return-color: rgba($color, $opacity);
+	@return $return-color;
+}
+
+@function coGridMargin($numerator, $denominator)
+{
+	$return-margin: $numerator / $denominator * 100% ;
+	@return $return-margin;
+}
+
+@mixin rgba-type($propertery, $bg-color: $default-text-color, $opacity: 1)
+{
+	@if $propertery == bg
+	{
+		$propertery : background-color;
+	}
+
+	@if $propertery == border
+	{
+		$propertery : border-color;
+	}
+
+	$bgcolor: rgba($bg-color, $opacity);
+
+	#{$propertery}: $bgcolor;
+
+	@if $propertery == background-color
+	{
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($bgcolor)}', endColorstr='#{ie-hex-str($bgcolor)}');
+	}
+}
+
+/* .example-rgba-type
+{
+	@include rgba-type(border-top-color, color(grey, 2), 0.5);
+	@include rgba-type(bg, $colorBlack, 0.5);
+	@include rgba-type(border, $colorBlack, 0.5);
+	@include rgba-type(color, #CC00CC);
+} */
+
+/******************************
+FONT FAMILY
+******************************/
+@mixin fontType($type:default)
+{
+	@if $type == default
+	{
+		font-family: 'Roboto', Helvetica, Arial, "微軟正黑體", "Microsoft JhengHei", "Heiti TC", "LiHei Pro", "新細明體", PMingLiU, sans-serif;
+	}
+	@else if  $type == raleway
+	{
+		font-family: 'Raleway', Helvetica, Arial,  "微軟正黑體", "Microsoft JhengHei", "Heiti TC", "LiHei Pro", "新細明體", PMingLiU, sans-serif;
+	}
+}
+
+/******************************
+HEADING H1-H6, TEXT
+******************************/
+@mixin textStyle($Style: default)
+{
+	@if (map-get(map-get($heading-array, $Style), fontType) == null)
+	{
+		@include fontType();
+
+	}@else
+	{
+		@include fontType(map-get(map-get($heading-array, $Style), fontType));
+	}
+
+	@for $i from 0 to length($devices)
+	{
+		$thisDevice: unquote(nth($devices, $i+1));
+
+		.#{$thisDevice} &
+		{
+			font-size: nth(map-get(map-get($heading-array, $Style), fontSize), $i+1);
+
+			@if (map-get(map-get($heading-array, $Style), lineHeight) != null)
+			{
+				line-height: nth(map-get(map-get($heading-array, $Style), lineHeight), $i+1);
+			}
+
+			@if (map-get(map-get($heading-array, $Style), letterSpacing) != null)
+			{
+				letter-spacing: nth(map-get(map-get($heading-array, $Style), letterSpacing), $i+1);
+			}
+
+			@if (map-get(map-get($heading-array, $Style), fontWeight) != null)
+			{
+				font-weight: nth(map-get(map-get($heading-array, $Style), fontWeight), $i+1);
+			}
+
+			@if (map-get(map-get($heading-array, $Style), color) != null)
+			{
+				color: nth(map-get(map-get($heading-array, $Style), color), 1);
+			}
+		}
+	}
+}
+
+/******************************
+IMG MAP
+******************************/
+@mixin dImgMap($dx, $dy)
+{
+	background-image: url($dImgMap);
+	background-position: $dx $dy;
+}
+
+@mixin mImgMap($dx, $dy)
+{
+	background-image: url($mImgMap);
+	background-size: $mImgMapWidth $mImgMapHeight;
+	background-position: $dx $dy;
+}
+
+/******************************
+COMMON MIXIN
+******************************/
+@mixin resetSpacing
+{
+	padding: 0px;
+	margin: 0px;
+	border: 0px;
+}
+
+@mixin mPadding
+{
+	box-sizing: border-box;
+	padding: 0px 20px;
+}
+
+
+/******************************
+FORM ELEMENT RESET
+******************************/
+@mixin formStyleMobileReset($conf: ())
+{
+	$conf: map-merge((
+		width: $default-reset-input-width,
+		height: $default-reset-input-height,
+		border: $default-reset-input-border,
+		border-color: $default-reset-input-border-color,
+		border-style: $default-reset-input-border-style,
+		border-radius: $default-reset-input-border-radius,
+		padding: $default-reset-input-border-padding,
+		bgColor: $default-reset-input-bgColor,
+		color: $default-reset-input-color
+	), $conf);
+
+	appearance: none;
+	box-sizing: border-box;
+	border-radius :#{map-get($conf, border-radius)};
+	width: #{map-get($conf, width)};
+	height: #{map-get($conf, height)};
+	border: #{map-get($conf, border)} #{map-get($conf, border-style)} #{map-get($conf, border-color)};
+	background-color: #{map-get($conf, bgColor)};
+	padding: #{map-get($conf, padding)};
+	color: #{map-get($conf, color)};
+}
+
+@mixin formStyleMobileSearchReset
+{
+	appearance: none;
+	border-radius: 0px;
+
+	line-height: 100%;
+	font-size: 0;
+	text-indent: -999px;
+	color: transparent;
+	padding: 0;
+	border: 0px;
+	background-color: transparent;
+	cursor: pointer;
+}
+
+@mixin formStyleMobileSearchStyle
+{
+	width: 100%;
+	height: 100%;
+	/* background-image: url($searchResetImg);
+	background-size: 100% auto; */
+}
+
+/******************************
+TRIANGLE GENERATOR
+******************************/
+@mixin triangleGenerator
+{
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 10px 10px 0 10px;
+	border-color: #007bff transparent transparent transparent;
+}
+
+/******************************
+MWIDTH WRAPPER
+******************************/
+@mixin mWidth($conf: ())
+{
+	$conf: map-merge((
+		width-desktop: map-get($min-width-setting-s1, width-desktop),
+		padding-desktop: map-get($min-width-setting-s1, padding-desktop),
+		width-tablet: map-get($min-width-setting-s1, width-tablet),
+		padding-tablet: map-get($min-width-setting-s1, padding-tablet),
+		width-mobile: map-get($min-width-setting-s1, width-mobile),
+		padding-mobile: map-get($min-width-setting-s1, padding-mobile)
+	), $conf);
+
+	position: relative;
+	box-sizing: border-box;
+	display: block;
+	margin: 0px auto;
+
+	.desktop &
+	{
+		width: #{map-get($conf, width-desktop)};
+		padding: #{map-get($conf, padding-desktop)};
+	}
+
+	.tablet &
+	{
+		width: #{map-get($conf, width-tablet)};
+		padding: #{map-get($conf, padding-tablet)};
+	}
+
+	.mobile &
+	{
+		width: #{map-get($conf, width-mobile)};
+		padding: #{map-get($conf, padding-mobile)};
+	}
+}
+
+
+/* .example_1
+{
+	@include mWidth((width-desktop:100px));
+}
+
+.example_2
+{
+	@include mWidth($min-width-setting-s2);
+}
+ */
+
+ @mixin ratio($border)
+ {
+   position: absolute;
+   display: block;
+   top: $border+px;
+   left: $border+px;
+   right: $border+px;
+   bottom: $border+px;
+ }
