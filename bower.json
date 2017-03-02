@@ -62,6 +62,22 @@
         "public/jquery.selectric.min.js",
         "public/selectric.css"
       ]
+    },
+    "Snap.svg": {
+      "main": [
+        "dist/snap.svg-min.js"
+      ]
+    },
+    "moment": {
+      "main": [
+        "min/moment.min.js"
+      ]
+    },
+    "jScrollPane": {
+      "main": [
+        "script/jquery.jscrollpane.min.js"
+      ]
     }
+
   }
 }
